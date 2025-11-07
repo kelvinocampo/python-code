@@ -21,8 +21,9 @@ class Model:
 
         self._model_name = model_name
 
+        keys = set(list(keys))
         self.keys = list(keys)
-        self.keys.insert(0, "id")
+        self.keys.append("id")
 
     @property
     def _rows(self):
@@ -99,7 +100,7 @@ class Model:
         print()
 
     def delete(self, where: Optional[dict] = None):
-        if not where:
+        if not where and not self._rows:
             self._rows = []
             self.affectedRows = len(self._rows)
             return

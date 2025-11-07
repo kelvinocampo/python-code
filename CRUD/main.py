@@ -4,8 +4,8 @@ from helpers import *
 
 
 model = Model()
-keys = model.keys
-del keys["id"]
+keys = list(model.keys)
+keys.remove("id")
 
 while True:
     choice = inquirer.select(
